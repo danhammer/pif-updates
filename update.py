@@ -51,7 +51,7 @@ class UpdateHandler(InboundMailHandler):
     def get_urlsafe(cls, address):
         """Return urlsafe string from supplied email address.
 
-        Example: 'PIF <update+ag5kZXZ@pif-update.appspotmail.com>' would
+        Example: 'PIF <update+ag5kZXZ@piffer-updates.appspotmail.com>' would
         return ag5kZXZ as the urlsafe string.
         """
         if address.find('<') > -1:

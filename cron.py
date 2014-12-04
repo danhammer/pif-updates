@@ -34,7 +34,7 @@ class CronUpdateHandler(webapp2.RequestHandler):
     @classmethod
     def get_reply_address(cls, urlsafe):
         """Return update email reply address given supplied urlsafe string."""
-        return 'PIFfer <update+%s@pif-update.appspotmail.com>' % urlsafe
+        return 'PIF <update+%s@piffer-updates.appspotmail.com>' % urlsafe
 
     @classmethod
     def get_update_message(cls, team, to, sender, date):
@@ -79,7 +79,7 @@ class CronDigestHandler(webapp2.RequestHandler):
     def get_digest_message(cls, team, digest, date, to):
         """Sends update reminder email to subscriber."""
         day = "{:%b %d, %Y}".format(date)
-        reply_to = 'PIF <noreply@pif-update.appspotmail.com>'
+        reply_to = 'PIF <noreply@piffer-updates.appspotmail.com>'
         fields = dict(
             sender=reply_to,
             to=to,

@@ -27,7 +27,7 @@ from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 import model
 
 
-_ADMINS = ['daniel.hammer@gsa.gov', 'michelle.hood@gsa.gov']
+_ADMINS = ['daniel.hammer@gsa.gov', 'dan.s.hammer@gmail.com', 'michelle.m.hood@gmail.com']
 
 
 class AdminHandler(InboundMailHandler):
@@ -66,7 +66,7 @@ class AdminHandler(InboundMailHandler):
     @classmethod
     def get_subscription_msg(cls, to, report):
         """Returns EmailMessage for supplied recipient and report."""
-        reply_to = 'PIF <noreply@pif-update.appspotmail.com>'
+        reply_to = 'PIF <noreply@piffer-updates.appspotmail.com>'
         fields = dict(
             sender=reply_to,
             to=to,
