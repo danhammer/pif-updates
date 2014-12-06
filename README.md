@@ -1,4 +1,4 @@
-# What is this?
+## What is this?
 
 This is a lightweight project to collect and process PIF team snippets.  Every Monday morning, the current PIFs will receive an e-mail asking for updates or blockers -- anything that they want to share with the group.  Each PIF replies to the e-mail, and at the end of the day, a digest e-mail is sent out to the group.
 
@@ -21,15 +21,15 @@ The server sends back a confirmation email each time with a summary of subscript
 ```
 Your changes were saved:
 
-Craig Hansen, chansen@wri.org, unsubscribe
-Nigel Sizer, nsizer@wri.org, subscribe, admin
+Gaj Sunthara, sivagajen.suntharalingam@gsa.gov, pif, subscribe, admin
+Ashley Jablow, ashley.jablow@gsa.gov, pif, subscribe, pif, unsubscribe
 ```
 
 Note that this project supports multiple teams, so that as long as the cron jobs are appropriately specified, you can use this project for other teams.  So, for example, you can swap out `pif` in the admin e-mails for `18f` or whatever.
 
 That's it. Pretty simple. 
 
-# Developing
+## Developing
 
 This project rides on the Google App Engine Python SDK runtime. After it's installed locally and on your path:
 
