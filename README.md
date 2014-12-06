@@ -1,30 +1,22 @@
-# What is Hermes?
+# What is this?
 
-Hermes is an Olympian god in Greek religion and mythology, son of Zeus and the Pleiad Maia. He is quick and cunning, moves freely between the worlds of the mortal and divine, and is the messenger of the gods. 
+This is a lightweight project to collect and process PIF team snippets.  Every Monday morning, the current PIFs will receive an e-mail asking for updates or blockers -- anything that they want to share with the group.  Each PIF replies to the e-mail, and at the end of the day, a digest e-mail is sent out to the group.
 
-Hermes is also our team snippets clone. But much cooler. Because it's free. And hipster. The entire messaging interface is over email.
-
-![](http://www.marvunapp.com/Appendix/hermesmr1.jpg)
-
-# How's this thing work?
-
-Hermes sends out a reminder email to all subscribers on a configurable schedule. It's just like team snippets. You respond to the email with your bullet points. Then on Friday morning at 9a Eastern, Hermes sends everyone the summary email. Boom.
-
-To subscribe people on the team, admins (Aaron, Alyssa, Crystal, Dan, Robin) subscribe people over email by sending Hermes a request. For example, to subscribe Craig and Nigel, we send this to Hermes via `admin@hermes-hub.appspotmail.com`:
+To subscribe people on the team, admins (Dan and Michelle) subscribe people over email by sending Hermes a request. For example, to subscribe Gaj and Ashley, we send this to our messaging server via `admin@piffer-updates.appspotmail.com`:
 
 ```
-Craig Hansen, chansen@wri.org, subscribe
-Nigel Sizer, nsizer@wri.org, subscribe
+Gaj Sunthara, sivagajen.suntharalingam@gsa.gov, pif, subscribe
+Ashley Jablow, ashley.jablow@gsa.gov, pif, subscribe
 ```
 
-Oops. Nigel needs to be an admin and Craig wants to unsubscribe. No problem:
+Oops. Gaj needs to be an admin and Ashley wants to unsubscribe. No problem:
 
 ```
-Craig Hansen, chansen@wri.org, unsubscribe
-Nigel Sizer, nsizer@wri.org, subscribe, admin
+Gaj Sunthara, sivagajen.suntharalingam@gsa.gov, pif, subscribe, admin
+Ashley Jablow, ashley.jablow@gsa.gov, pif, subscribe, pif, unsubscribe
 ```
 
-Hermes sends back a confirmation email each time with a summary of subscriptions:
+The server sends back a confirmation email each time with a summary of subscriptions:
 
 ```
 Your changes were saved:
@@ -33,19 +25,23 @@ Craig Hansen, chansen@wri.org, unsubscribe
 Nigel Sizer, nsizer@wri.org, subscribe, admin
 ```
 
+Note that this project supports multiple teams, so that as long as the cron jobs are appropriately specified, you can use this project for other teams.  So, for example, you can swap out `pif` in the admin e-mails for `18f` or whatever.
+
 That's it. Pretty simple. 
 
 # Developing
 
-Hermes rides on the Google App Engine Python SDK runtime. After it's installed locally and on your path:
+This project rides on the Google App Engine Python SDK runtime. After it's installed locally and on your path:
 
 ```bash
 $ cd hermes
 $ dev_app_server --clear_datastore=true --show_mail_body=true .
 ```
 
-Hermes endpoints will be available at http://localhost:8080 and the admin console will be available at http://localhost:8000. 
+Endpoints will be available at http://localhost:8080 and the admin console will be available at http://localhost:8000. 
 
 You can send update and admin emails using the admin form at http://localhost:8000/mail. For update emails, the reply-to address must match the reply-to address in the update reminder email that gets sent. Watch the dev console for the address.
 
 App Engine admins can manually invoke the `/cron/update` endpoint to send out update emails. Similarly they can invoke the `/cron/digest` endpoint to trigger the digest email. You can also hit `/cron/digest?test=true` to get an HTML response message with the digest.
+
+Push to production with `appcfg.py update --oauth2 .`, as long as you have permissions (granted by [**@danhammer**](https://github.com/danhammer)).
