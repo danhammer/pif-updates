@@ -50,7 +50,7 @@ class SubscriberUpdate(ndb.Model):
 
     @classmethod
     def get_updates(cls, date, team):
-        """Get SubscriberUpdate modesl for supplied date and team."""
+        """Get SubscriberUpdate models for supplied date and team."""
         return cls.query(
             cls.date == date,
             cls.team == team.lower()

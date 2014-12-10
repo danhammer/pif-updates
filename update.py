@@ -16,7 +16,8 @@ class UpdateHandler(InboundMailHandler):
     @classmethod
     def get_update(cls, body):
         """Process body to update lines starting with *, return as string."""
-        good_msg = body.split('From: ')[0]
+        update_section = body.split('[DONE]')[0]
+        good_msg = update_section.split('From: ')[0]
         updates = good_msg.split('*')
         cleaned = [x.strip('[\n ]') for x in updates]
         filtered = filter(lambda x: (x != '' and x != '*'), cleaned)

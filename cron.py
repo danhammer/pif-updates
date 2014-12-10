@@ -24,12 +24,17 @@ class CronUpdateHandler(webapp2.RequestHandler):
     def get_update_message(cls, team, to, sender, date):
         """Return unsent update EmailMessage."""
         day = "{:%b %d, %Y}".format(date)
+
+        header = "Just reply with a few brief bullets starting with *. "
+        header += "Finish with [DONE] if there is extraneous or quoted "
+        header += "text at the end of the e-mail reply."
+
         fields = dict(
             sender=sender,
             to=to,
             reply_to=sender,
             subject='[PIF-update] Send %s updates - %s' % (team.upper(), day),
-            body="Just reply with a few brief bullets starting with *")
+            body=header)
         return mail.EmailMessage(**fields)
 
     @classmethod
