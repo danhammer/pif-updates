@@ -12,7 +12,7 @@ def _process(line, team='pif'):
     """Accepts a line with {first},{last},{agency},{email} and returns a
     properly formatted string for subscription email."""
     first, last, agency, email = [x.strip() for x in line.split(',')]
-    return '%s %s [%s],%s,%s,subscribe' % (first, last, agency, email, team)
+    return '%s %s [%s],%s,%s,unsubscribe' % (first, last, agency, email, team)
 
 
 def convert_csv(csv_path='subscribe.csv'):

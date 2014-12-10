@@ -2,9 +2,9 @@ cron:
 # PIF team
 - description: Sends PIF team updates request email to all subscribers
   url: /cron/update/pif
-  schedule: every mon 10:00
+  schedule: every wed 9:30
   timezone: America/New_York
 - description: Sends PIF team updates digest email to all subscribers
   url: /cron/digest/pif
-  schedule: every mon 18:00
+  schedule: every wed 9:35
   timezone: America/New_York

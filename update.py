@@ -16,18 +16,10 @@ class UpdateHandler(InboundMailHandler):
     @classmethod
     def get_update(cls, body):
         """Process body to update lines starting with *, return as string."""
-        lines = []
-        tokens = body.splitlines()
-        if len(tokens) == 1:
-            # Hack: Maybe all bullets on same line:
-            tokens = ['* %s' % x for x in body.split('*')]
-        for x in tokens:
-            if not x[1:].strip():
-                continue
-            if x.strip().startswith('*'):
-                x = '* %s' % x[1:].strip()
-                lines.append(x)
-        message = '\n'.join(lines)
+        updates = body.split('*')
+        cleaned = [x.strip('[\n ]').replace('\n', '') for x in updates]
+        filtered = filter(lambda x: x != '', cleaned)
+        message = '* ' + '\n* '.join(filtered)
         return message
 
     @classmethod
