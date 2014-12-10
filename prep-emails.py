@@ -5,14 +5,24 @@ admin@piffer-updates.appspotmail.com in order to manage team snippet
 subscriptions.
 """
 
-l = 'Dan, Hammer, NASA, daniel.hammer@gsa.gov'
 
-
-def _process(line, team='pif'):
+def _process(line, team='pif', status='subscribe', bundle=True):
     """Accepts a line with {first},{last},{agency},{email} and returns a
     properly formatted string for subscription email."""
     first, last, agency, email = [x.strip() for x in line.split(',')]
-    return '%s %s [%s],%s,%s,unsubscribe' % (first, last, agency, email, team)
+    name = '%s %s' % (first, last)
+
+    if bundle:
+        team_bundler = {
+            'Ashley Jablow': 'Ashley Jablow and David Naffis',
+            'David Naffis': 'Ashley Jablow and David Naffis',
+            'Christopher Daggett': 'Christopher Daggett and Ben Getson',
+            'Ben Getson': 'Christopher Daggett and Ben Getson'
+        }
+        if name in team_bundler.keys():
+            name = team_bundler[name]
+
+    return '%s [%s],%s,%s,%s' % (name, agency, email, team, status)
 
 
 def convert_csv(csv_path='subscribe.csv'):
