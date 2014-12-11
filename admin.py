@@ -10,7 +10,11 @@ from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 import model
 
 
-_ADMINS = ['daniel.hammer@gsa.gov', 'dan.s.hammer@gmail.com', 'michelle.m.hood@gmail.com']
+_ADMINS = [
+    'daniel.hammer@gsa.gov',
+    'dan.s.hammer@gmail.com',
+    'michelle.m.hood@gmail.com'
+]
 
 
 class AdminHandler(InboundMailHandler):

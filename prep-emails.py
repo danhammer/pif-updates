@@ -6,7 +6,7 @@ subscriptions.
 """
 
 
-def _process(line, team='pif', status='subscribe', bundle=True):
+def _process(line, team='pif', status='subscribe', bundle=False):
     """Accepts a line with {first},{last},{agency},{email} and returns a
     properly formatted string for subscription email."""
     first, last, agency, email = [x.strip() for x in line.split(',')]
@@ -14,10 +14,10 @@ def _process(line, team='pif', status='subscribe', bundle=True):
 
     if bundle:
         team_bundler = {
-            'Ashley Jablow': 'Ashley Jablow and David Naffis',
-            'David Naffis': 'Ashley Jablow and David Naffis',
-            'Christopher Daggett': 'Christopher Daggett and Ben Getson',
-            'Ben Getson': 'Christopher Daggett and Ben Getson'
+            'Ashley Jablow': 'Ashley Jablow//David Naffis',
+            'David Naffis': 'Ashley Jablow//David Naffis',
+            'Christopher Daggett': 'Christopher Daggett//Ben Getson',
+            'Ben Getson': 'Christopher Daggett//Ben Getson'
         }
         if name in team_bundler.keys():
             name = team_bundler[name]
