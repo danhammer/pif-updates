@@ -51,18 +51,3 @@ A standard development progression follows:
 3. Navigate to `localhost:8080/cron/digest/pif` to send the digest to the team (of only one person, currently).  The digest body will appear in the console.  
 
 Push to production with `appcfg.py update --oauth2 .`, as long as you have permissions (granted by [**@danhammer**](https://github.com/danhammer)).
-
-
-
-<!--   From: PIF <noreply@piffer-updates.appspotmail.com>
-  To: danhammer@berkeley.edu
-  Reply-to: PIF <noreply@piffer-updates.appspotmail.com>
-  Subject: [PIF-update] PIF team updates - Dec 10, 2014
-  Body:
-    Content-type: text/plain
-    Data length: 167
------
-dandan <danhammer@berkeley.edu>
-* dalfjdalj daljsdfkj adskjfal adkjflskdj asdklfjalsdj
-* this is a second bullet\n with a newline
-* aldkjfa;l adfjl akjdf asdfjeuas -->
