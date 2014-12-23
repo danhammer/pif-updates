@@ -34,7 +34,7 @@ That's it. Pretty simple.
 This project rides on the Google App Engine Python SDK runtime. After it's installed locally and on your path:
 
 ```bash
-$ cd hermes
+$ cd pif-update
 $ dev_appserver.py --clear_datastore=true --show_mail_body=true .
 ```
 
