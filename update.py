@@ -2,6 +2,7 @@
 
 import logging
 import webapp2
+from datetime import datetime
 
 from google.appengine.ext import ndb
 from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
@@ -17,7 +18,9 @@ class UpdateHandler(InboundMailHandler):
     def get_update(cls, body):
         """Process body to update lines starting with *, return as string."""
         update_section = body.split('[DONE]')[0]
-        good_msg = update_section.split('\nOn Mon ')[0]
+        dt = datetime.now()
+        s = 'On {0:%b} {0.day}, {0:%Y} at 10:00 AM, PIF'.format(dt)
+        good_msg = update_section.split(s)[0]
         updates = good_msg.split('*')
         cleaned = [x.strip('[\n ]') for x in updates]
         filtered = filter(lambda x: (x != '' and x != '*'), cleaned)
