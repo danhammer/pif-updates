@@ -32,7 +32,8 @@ class UpdateHandler(InboundMailHandler):
             '-----Original Message-----',
             'Sent from my iPhone',
             'On Mon, {0:%b} {0.day}, {0:%Y} at 10:00 AM, PIF'.format(dt),
-            'On Mon, {0:%b} {0.day}, {0:%Y}, at 10:00 AM, PIF'.format(dt)
+            'On Mon, {0:%b} {0.day}, {0:%Y}, at 10:00 AM, PIF'.format(dt),
+            'Just reply with a few brief bullets starting with'
         ]
 
         good_msg = _cleaner(body, breaks)
