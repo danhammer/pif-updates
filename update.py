@@ -17,15 +17,25 @@ class UpdateHandler(InboundMailHandler):
     @classmethod
     def get_update(cls, body):
         """Process body to update lines starting with *, return as string."""
-        update_section = body.split('[DONE]')[0]
-        update_section = body.split('[done]')[0]
-        update_section = body.split('Sent from my iPhone')[0]
-        update_section = update_section.split('-----Original Message-----')[0]
+
+        def _cleaner(s, break_list):
+            clean_text = s
+            for b in break_list:
+                clean_text = clean_text.split(b)[0]
+            return clean_text.strip()
+
         dt = datetime.now()
-        s1 = 'On Mon, {0:%b} {0.day}, {0:%Y} at 10:00 AM, PIF'.format(dt)
-        s2 = 'On Mon, {0:%b} {0.day}, {0:%Y}, at 10:00 AM, PIF'.format(dt)
-        good_msg = update_section.split(s1)[0]
-        good_msg = good_msg.split(s2)[0]
+
+        breaks = [
+            '[DONE]',
+            '[done]',
+            '-----Original Message-----',
+            'Sent from my iPhone',
+            'On Mon, {0:%b} {0.day}, {0:%Y} at 10:00 AM, PIF'.format(dt),
+            'On Mon, {0:%b} {0.day}, {0:%Y}, at 10:00 AM, PIF'.format(dt)
+        ]
+
+        good_msg = _cleaner(body, breaks)
         updates = good_msg.split('*')
         cleaned = [x.strip('[\n ]') for x in updates]
         filtered = filter(lambda x: (x != '' and x != '*'), cleaned)
