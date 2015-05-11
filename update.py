@@ -29,10 +29,13 @@ class UpdateHandler(InboundMailHandler):
         breaks = [
             '[DONE]',
             '[done]',
+            '[Done]',
             '-----Original Message-----',
             'Sent from my iPhone',
             'On Mon, {0:%b} {0.day}, {0:%Y} at 10:00 AM, PIF'.format(dt),
             'On Mon, {0:%b} {0.day}, {0:%Y}, at 10:00 AM, PIF'.format(dt),
+            'On {0:%b} {0.day}, {0:%Y} 10:00 AM'.format(dt),
+            'On {0:%b} {0.day}, {0:%Y}, at 10:00 AM'.format(dt),
             'Just reply with a few brief bullets starting with'
         ]
 
